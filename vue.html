@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="vue.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+
+
+<body>
+    <center>
+        <h1>SMARTPHONE STORE</h1>
+    </center>
+
+
+
+    <div id="app">
+        <h3>Cart : {{ cart.length}}</h3>
+        <ul>
+            <ul v-for="(product,i) in products">{{product.id}} <br /> <img :src="product.img"> <br /> {{ product.name}} <br /> {{ product.price}}<br /> {{ product.stock}}</br>
+                <button type="submit" @click="addToCart(i)">Add To Cart</button>
+
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                products: [{
+                        id: 1,
+                        img: "foto/OPPOa83.jpg",
+                        name: "Merk : OPPO A83",
+                        price: "Price : 1.799.000",
+                        stock: 78
+
+                    }, {
+                        id: 2,
+                        img: "foto/Xiaomi6a.jpg",
+                        name: "Merk : Xiaomi Redmi 6A",
+                        price: "Price : 1.310.000",
+                        stock: 55
+
+                    }, {
+                        id: 3,
+                        img: "foto/OPPOn.jpg",
+                        name: "Merk : OPPO Neo 7",
+                        price: "Price : 1.389.000",
+                        stock: 15
+
+                    }, {
+                        id: 4,
+                        img: "foto/Samsung.jpg",
+                        name: "Merk : Samsung Galaxy A7",
+                        price: "Price : 4.149.000",
+                        stock: 13
+
+                    }, {
+                        id: 5,
+                        img: "foto/Realme.jpg",
+                        name: "Merk : Realme 2",
+                        price: "Price : 1.999.000",
+                        stock: 24
+
+                    }, {
+                        id: 6,
+                        img: "foto/Vivov.jpg",
+                        name: "Merk : Vivo V11 Pro",
+                        price: "Price : 4.485.000",
+                        stock: 5
+
+                    }, {
+                        id: 7,
+                        img: "foto/ASUS.jpg",
+                        name: "Merk : ASUS ROG Phone ZS600KL",
+                        price: "Price : 15.000.000",
+                        stock: 7
+
+                    }, {
+                        id: 1,
+                        img: "foto/OPPOf.jpg",
+                        name: "Merk : OPPO Find X",
+                        price: "Price : 12.589.000",
+                        stock: 16
+                    },
+
+                ],
+                cart: []
+            },
+            methods: {
+                addToCart(i) {
+                    if (this.products[i].stock > 0) {
+                        this.products[i].stock = this.products[i].stock - 1
+                        this.cart = this.cart + 1
+                    } else {
+                        alert("Out Of Stock")
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
